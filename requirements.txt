@@ -1,4 +1,4 @@
 pytest
 selenium
-selene
+selene == 2.0.0rc2
 allure-pytest
