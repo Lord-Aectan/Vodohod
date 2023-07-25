@@ -2,7 +2,7 @@ from dotenv import dotenv_values
 from selene import browser, by, be, have
 
 
-def test_mobile_authorization_web(mobile_browser_management):
+def test_mobile_authorization_web(mobile_browser_management_web):
     dotenv = dotenv_values()
     browser.open('/')
 
