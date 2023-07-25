@@ -3,7 +3,7 @@ from dotenv import dotenv_values
 from selene import browser, by, be, have
 
 
-def test_authorization_form_web(desktop_browser_management):
+def test_authorization_form_web(desktop_browser_management_web):
     dotenv = dotenv_values()
     # WHEN
     browser.open('/')
