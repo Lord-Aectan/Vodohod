@@ -1,4 +1,3 @@
-import os
 from dotenv import dotenv_values
 from selene import browser, by, be, have
 
