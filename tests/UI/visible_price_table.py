@@ -6,4 +6,6 @@ def test_visible_price_table(desktop_browser_management_web):
     browser.element('#cookie-alert button').click()
     # WHEN
     browser.element('a[data-tab-btn="d-p_prices"]').click()
+
+    # THEN
     browser.element('#vue-app-price-table').should(be.visible)
