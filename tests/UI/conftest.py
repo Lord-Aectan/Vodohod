@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 def pytest_addoption(parser):
     parser.addoption('--browser_name', action='store', default="chrome")
-    parser.addoption('--browser_version', action='store', default="99.0")
+    parser.addoption('--browser_version', action='store', default="100.0")
 
 
 @pytest.fixture(scope='session', autouse=True)
