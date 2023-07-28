@@ -1,7 +1,7 @@
 from selene import browser, by, be, have
 
 
-def test_visible_price_table(desktop_browser_management_web):
+def test_visible_price_table(setup_browser, desktop_browser_management_web):
     browser.open('https://vodohod.com/cruises/2024/teplohod-mustaj-karim-09-nov-13-nov-2024/')
     browser.element('#cookie-alert button').click()
     # WHEN

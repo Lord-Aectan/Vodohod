@@ -2,7 +2,7 @@ import os
 from selene import browser, by, be, have
 
 
-def test_mobile_authorization_web(mobile_browser_management_web):
+def test_mobile_authorization_web(setup_browser, mobile_browser_management_web):
     login = os.getenv('login')
     password = os.getenv('password')
     browser.open('/')

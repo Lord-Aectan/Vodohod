@@ -2,7 +2,7 @@ from dotenv import dotenv_values
 from selene import browser, by, be, have
 
 
-def test_mobile_authorization_booking(mobile_browser_management_booking):
+def test_mobile_authorization_booking(setup_browser, mobile_browser_management_booking):
     login = os.getenv('login')
     password = os.getenv('password')
     browser.open('/')

@@ -1,7 +1,7 @@
 from tests.authorization.authorization_desktop_form import AuthorizationDesktopForm
 
 
-def test_authorization_form_web(desktop_browser_management_web):
+def test_authorization_form_web(setup_browser, desktop_browser_management_web):
     authorization_desktop_form = AuthorizationDesktopForm()
     # WHEN
     authorization_desktop_form.open()
