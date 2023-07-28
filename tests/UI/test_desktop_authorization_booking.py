@@ -1,11 +1,10 @@
 import os
 import allure
+from dotenv import dotenv_values
 from selene import browser, by, be, have
-
+dotenv = dotenv_values()
 
 def test_desktop_authorization_booking(setup_browser, desktop_browser_management_booking):
-    login = os.getenv('login')
-    password = os.getenv('password')
     with allure.step('Открываем браузер в интерфейсе booking'):
         browser.open('/')
 
@@ -13,9 +12,9 @@ def test_desktop_authorization_booking(setup_browser, desktop_browser_management
     with allure.step('Открываем форму авторизации'):
         browser.element('[class^=header-top__btn]').click()
     with allure.step('Вводим логин'):
-        browser.element('[id=auth_email]').click().type(f'{login}')
+        browser.element('[id=auth_email]').click().type(f'{dotenv.get("login")}')
     with allure.step('Вводим пароль'):
-        browser.element('[id=user_password]').click().type(f'{password}')
+        browser.element('[id=user_password]').click().type(f'{dotenv.get("password")}')
     with allure.step('Нажимаем кнопку авторизации'):
         browser.element('.b-modal__bottom div').click()
 

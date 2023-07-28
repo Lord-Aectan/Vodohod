@@ -1,16 +1,19 @@
+import os
+
 from dotenv import dotenv_values
 from selene import browser, by, be, have
 
+dotenv = dotenv_values()
+
+
 
 def test_mobile_authorization_booking(setup_browser, mobile_browser_management_booking):
-    login = os.getenv('login')
-    password = os.getenv('password')
     browser.open('/')
 
     # WHEN
     browser.element('.header-top__btn--auth').click()
-    browser.element('#auth_email').type(f'{login}')
-    browser.element('#user_password').type(f'{password}')
+    browser.element('#auth_email').type(f'{dotenv.get("login")}')
+    browser.element('#user_password').type(f'{dotenv.get("password")}')
     browser.element('.b-modal__bottom div').click()
 
     # THEN

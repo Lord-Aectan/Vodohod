@@ -3,8 +3,9 @@ import os
 from selene.support.shared import browser
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from dotenv import load_dotenv
+from dotenv import load_dotenv, dotenv_values
 
+dotenv = dotenv_values()
 
 DEFAULT_BROWSER_VERSION = "100.0"
 
@@ -36,15 +37,15 @@ def setup_browser(request):
             "enableVideo": True
         }
     }
-    # options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--disable-dev-shm-usage')
 
     options.capabilities.update(selenoid_capabilities)
 
-    login = os.getenv('SELENOID_LOGIN')
-    password = os.getenv('SELENOID_PASSWORD')
+    # login = os.getenv('SELENOID_LOGIN')
+    # password = os.getenv('SELENOID_PASSWORD')
 
     driver = webdriver.Remote(
-        command_executor=f'https://{login}:{password}@selenoid.autotests.cloud/wd/hub',
+        command_executor=f'https://{dotenv.get("SELENOID_LOGIN")}:{dotenv.get("SELENOID_PASSWORD")}@selenoid.autotests.cloud/wd/hub',
         options=options
     )
     browser.config.driver = driver

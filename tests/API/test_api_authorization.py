@@ -1,6 +1,12 @@
 import logging
 import os
+
+from dotenv import dotenv_values
+
 from tests.API.helper import reqres_session
+
+
+dotenv = dotenv_values()
 
 
 def test_authorization():
@@ -8,8 +14,8 @@ def test_authorization():
     password = os.getenv('password')
     response = reqres_session.post('/security/authorise',
                                    json={
-                                       "login": f'{login}',
-                                       "password": f'{password}'}
+                                       "login": f'{dotenv.get("login")}',
+                                       "password": f'{dotenv.get("password")}'}
                                    )
     logging.info(response.json()['code'])
     assert response.status_code == 200
