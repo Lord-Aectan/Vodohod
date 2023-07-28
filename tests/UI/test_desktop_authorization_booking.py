@@ -3,7 +3,7 @@ import allure
 from selene import browser, by, be, have
 
 
-def test_desktop_authorization_bookinkg(desktop_browser_management_booking):
+def test_desktop_authorization_booking(setup_browser, desktop_browser_management_booking):
     login = os.getenv('login')
     password = os.getenv('password')
     with allure.step('Открываем браузер в интерфейсе booking'):

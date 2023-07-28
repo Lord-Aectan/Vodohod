@@ -6,40 +6,49 @@ from selenium.webdriver.chrome.options import Options
 from dotenv import load_dotenv
 
 
+DEFAULT_BROWSER_VERSION = "100.0"
+
+
 def pytest_addoption(parser):
-    parser.addoption('--browser_name', action='store', default="chrome")
-    parser.addoption('--browser_version', action='store', default="100.0")
+    parser.addoption(
+        '--browser_version',
+        default='100'
+    )
+
 
 
 @pytest.fixture(scope='session', autouse=True)
 def load_env():
-    load_dotenv()
+    load_dotenv('../.env')
 
 
-@pytest.fixture(scope='function', autouse=True)
-def setup_chrome(request):
-    browser_name = request.config.getoption('browser_name')
-    browser_version = request.config.getoption('browser_version')
+@pytest.fixture(scope='function')
+def setup_browser(request):
+    browser_version = request.config.getoption('--browser_version')
+    browser_version = browser_version if browser_version != "" else DEFAULT_BROWSER_VERSION
+
     options = Options()
     selenoid_capabilities = {
-        "browserName": f"{browser_name}",
-        "browserVersion": f"{browser_version}",
+        "browserName": "chrome",
+        "browserVersion": browser_version,
         "selenoid:options": {
             "enableVNC": True,
-            "enableVideo": True,
+            "enableVideo": True
         }
     }
+    # options.add_argument('--disable-dev-shm-usage')
+
     options.capabilities.update(selenoid_capabilities)
+
     login = os.getenv('SELENOID_LOGIN')
     password = os.getenv('SELENOID_PASSWORD')
+
     driver = webdriver.Remote(
         command_executor=f'https://{login}:{password}@selenoid.autotests.cloud/wd/hub',
         options=options
     )
-
-    yield
-
-    browser.quit()
+    browser.config.driver = driver
+    print('Connection with Selenoid: OK')
 
 @pytest.fixture
 def desktop_browser_management_web():
@@ -81,4 +90,3 @@ def mobile_browser_management_booking():
             yield
 
             browser.quit()
-
