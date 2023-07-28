@@ -1,9 +1,9 @@
+import dotenv
 from selene import browser, have, command
 import os
 import allure
 
-login = os.getenv('login')
-password = os.getenv('password')
+dotenv = dotenv.dotenv_values()
 
 
 class AuthorizationDesktopForm:
@@ -21,11 +21,11 @@ class AuthorizationDesktopForm:
 
     def type_login(self):
         with allure.step('Вводим логин'):
-            browser.element('[name=login]').type(f'{login}')
+            browser.element('[name=login]').type(f'{dotenv.get("login")}')
 
     def type_password(self):
         with allure.step('Ввдоим пароль и жмём Enter'):
-            browser.element('[name=password]').type(f'{password}').press_enter()
+            browser.element('[name=password]').type(f'{dotenv.get("password")}').press_enter()
 
     def should_have_authorization(self, value):
         with allure.step('Проверяем, что авторизация прошла успешно и отображается наше ФИО'):
