@@ -1,9 +1,10 @@
 import pytest
-import os
 from selene.support.shared import browser
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from dotenv import load_dotenv, dotenv_values
+
+from utils import attach
 
 dotenv = dotenv_values()
 
@@ -15,7 +16,6 @@ def pytest_addoption(parser):
         '--browser_version',
         default='100'
     )
-
 
 
 @pytest.fixture(scope='session', autouse=True)
@@ -45,11 +45,13 @@ def setup_browser(request):
     # password = os.getenv('SELENOID_PASSWORD')
 
     driver = webdriver.Remote(
-        command_executor=f'https://{dotenv.get("SELENOID_LOGIN")}:{dotenv.get("SELENOID_PASSWORD")}@selenoid.autotests.cloud/wd/hub',
+        command_executor=f'https://{dotenv.get("SELENOID_LOGIN")}:{dotenv.get("SELENOID_PASSWORD")}'
+                         f'@selenoid.autotests.cloud/wd/hub',
         options=options
     )
     browser.config.driver = driver
     print('Connection with Selenoid: OK')
+
 
 @pytest.fixture
 def desktop_browser_management_web():
@@ -57,7 +59,11 @@ def desktop_browser_management_web():
     browser.config.window_height = 1200
     browser.config.base_url = 'https://vodohod.com/'
     browser.config.timeout = 10
+
     yield
+
+    attach.add_screenshot(browser)
+    attach.add_video(browser)
 
     browser.quit()
 
@@ -68,9 +74,14 @@ def mobile_browser_management_web():
     browser.config.window_height = 667
     browser.config.base_url = 'https://vodohod.com/'
     browser.config.timeout = 10
+
     yield
 
+    attach.add_screenshot(browser)
+    attach.add_video(browser)
+
     browser.quit()
+
 
 @pytest.fixture
 def desktop_browser_management_booking():
@@ -78,16 +89,25 @@ def desktop_browser_management_booking():
     browser.config.window_height = 1200
     browser.config.base_url = 'https://booking.vodohod.com/?lang=ru&cruise_id=16823'
     browser.config.timeout = 10
+
     yield
+
+    attach.add_screenshot(browser)
+    attach.add_video(browser)
 
     browser.quit()
 
+
 @pytest.fixture
 def mobile_browser_management_booking():
-            browser.config.window_width = 495
-            browser.config.window_height = 667
-            browser.config.base_url = 'https://booking.vodohod.com/?lang=ru&cruise_id=16823'
-            browser.config.timeout = 10
-            yield
+    browser.config.window_width = 495
+    browser.config.window_height = 667
+    browser.config.base_url = 'https://booking.vodohod.com/?lang=ru&cruise_id=16823'
+    browser.config.timeout = 10
 
-            browser.quit()
+    yield
+
+    attach.add_screenshot(browser)
+    attach.add_video(browser)
+
+    browser.quit()
