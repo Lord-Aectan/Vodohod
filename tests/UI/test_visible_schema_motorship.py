@@ -1,7 +1,13 @@
 from selene import browser, by, be, have
 import allure
+from allure_commons.types import Severity
 
 
+@allure.tag('web')
+@allure.severity(Severity.CRITICAL)
+@allure.label('owner', 'dmoiseenko')
+@allure.feature('Задачи на проверку корректности схемы')
+@allure.title('У т/х Мустай Карим загружена и отображается схема теплохода')
 def test_visible_schema_motorship(setup_browser, desktop_browser_management_web):
     with allure.step('Открываем сайт'):
         browser.open('/')
