@@ -57,7 +57,7 @@ def setup_browser(request):
 def desktop_browser_management_web():
     browser.config.window_width = 1500
     browser.config.window_height = 1200
-    browser.config.base_url = 'https://vodohod.com/'
+    browser.config.base_url = 'https://vodohod.com'
     browser.config.timeout = 10
 
     yield
