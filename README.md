@@ -74,3 +74,7 @@ allure serve allure-results
 ### Проект интегрирован с Allure TestOps и Jira
 <img title="Allure_TestOps" src="images/screenschot/allure_testops.png">
 <img title="Jira" src="images/screenschot/Jira.png">
+
+### <p><img width="3%" title="Telegram" src="images/logo/tg.png"> Telegram</p>
+Настроена отправка отчета в Telegram
+<img title="Telegram_report_screen" src="images/screenschot/telegram.png">
