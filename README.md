@@ -76,5 +76,5 @@ allure serve allure-results
 <img title="Jira" src="images/screenschot/Jira.png">
 
 ### <p><img width="3%" title="Telegram" src="images/logo/tg.png"> Telegram</p>
-Настроена отправка отчета в Telegram
+<p>Настроена отправка отчета в Telegram</p>
 <img title="Telegram_report_screen" src="images/screenschot/telegram.png">
