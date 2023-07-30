@@ -73,4 +73,4 @@ allure serve allure-results
 
 ### Проект интегрирован с Allure TestOps и Jira
 <img title="Allure_TestOps" src="images/screenschot/allure_testops.png">
-<img title="Jira" src="images/screenschot/jira.png">
+<img title="Jira" src="images/screenschot/Jira.png">
