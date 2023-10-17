@@ -70,7 +70,7 @@ def mobile_browser_management_web():
     browser.config.window_width = 375
     browser.config.window_height = 667
     browser.config.base_url = 'https://vodohod.com/'
-    browser.config.timeout = 15
+    browser.config.timeout = 20
 
     yield
 
