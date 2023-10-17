@@ -55,7 +55,7 @@ def desktop_browser_management_web():
     browser.config.window_width = 1500
     browser.config.window_height = 1200
     browser.config.base_url = 'https://vodohod.com'
-    browser.config.timeout = 10
+    browser.config.timeout = 15
 
     yield
 
@@ -70,7 +70,7 @@ def mobile_browser_management_web():
     browser.config.window_width = 375
     browser.config.window_height = 667
     browser.config.base_url = 'https://vodohod.com/'
-    browser.config.timeout = 10
+    browser.config.timeout = 15
 
     yield
 
@@ -85,7 +85,7 @@ def desktop_browser_management_booking():
     browser.config.window_width = 1500
     browser.config.window_height = 1200
     browser.config.base_url = 'https://booking.vodohod.com/?lang=ru&cruise_id=17565'
-    browser.config.timeout = 10
+    browser.config.timeout = 15
 
     yield
 
@@ -100,7 +100,7 @@ def mobile_browser_management_booking():
     browser.config.window_width = 495
     browser.config.window_height = 667
     browser.config.base_url = 'https://booking.vodohod.com/?lang=ru&cruise_id=17565'
-    browser.config.timeout = 10
+    browser.config.timeout = 15
 
     yield
 
