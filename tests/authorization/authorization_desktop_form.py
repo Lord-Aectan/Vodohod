@@ -1,6 +1,5 @@
 import dotenv
-from selene import browser, have, command
-import os
+from selene import browser, have
 import allure
 
 dotenv = dotenv.dotenv_values()
