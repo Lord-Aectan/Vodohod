@@ -11,6 +11,6 @@ from allure_commons.types import Severity
 @allure.feature('Задачи на отображение информации по круизам')
 @allure.title('При запросе существующего круиза по нему возвращается информация')
 def test_included_cruise_available_on_site():
-    response = reqres_session.get('/ru/cruises/one/17799')
+    response = reqres_session.get('/ru/cruises/one/19036')
     pprint.pp(response.json())
     assert response.status_code == 200
