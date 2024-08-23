@@ -10,7 +10,7 @@ from allure_commons.types import Severity
 @allure.title('Не авторизованному пользователю доступна Таблица цен')
 def test_visible_price_table(setup_browser, desktop_browser_management_web):
     with allure.step('Открываем страницу круиза'):
-        browser.open('/cruises/2024/teplohod-mustaj-karim-09-nov-13-nov-2024/')
+        browser.open('/cruises/2025/teplohod-konstantin-korotkov-04-nov-07-nov-2025/')
     with allure.step('Закрываем окно про куки'):
         browser.element('#cookie-alert button').click()
     # WHEN
