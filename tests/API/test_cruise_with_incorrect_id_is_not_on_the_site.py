@@ -1,5 +1,5 @@
 import pprint
-from tests.API.helper import  reqres_session
+from tests.API.helper import reqres_session
 import allure
 from allure_commons.types import Severity
 
